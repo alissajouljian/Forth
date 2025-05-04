@@ -1,6 +1,5 @@
 # FORTH Compiler
 
-A lightweight FORTH interpreter implemented in Python. This project was created as a final project for the **Advanced Programming Languages** course, and it supports a subset of the FORTH language, including stack operations, arithmetic, and user-defined words.
 
 ## 📁 Project Structure
 

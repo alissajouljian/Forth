@@ -1,0 +1,8 @@
+: hello  \ no stack ops, just prints
+  72 emit 101 emit 108 emit 108 emit 111 emit 44 emit 32 emit 87 emit 111 emit 114 emit 108 emit 100 emit 33 emit;
+
+: double 2 * ;
+: sum2 + ;
+: squared dup * ;
+: cubed dup dup * * ;
+

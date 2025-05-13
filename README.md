@@ -1,90 +1,41 @@
+
 # FORTH Compiler
 
+A simple FORTH compiler that converts FORTH source code into x86-64 assembly. This compiler supports basic arithmetic operations, stack manipulation, variable assignments, and conditional logic. The output assembly code can be assembled and linked to produce an executable.
 
-## 📁 Project Structure
+## Features
 
-```
+* **Arithmetic Operations**: Supports `+`, `-`, `*`, `/`.
+* **Stack Manipulation**: Operations like `dup`, `drop`, `swap`, and `over`.
+* **Control Flow**: Implements conditional branching (`IF`, `ELSE`, `THEN`, `BEGIN`, `UNTIL`), and loops (`DO`, `LOOP`).
+* **Variable Handling**: Supports dynamic variable storage with `VAR`, `!`, and `@`.
+* **Assembly Output**: Generates x86-64 assembly code.
 
-forth-compiler/
-├── main.py                  # Entry point (REPL or file runner)
-├── compiler.py              # Interpreter logic
-├── stack.py                 # Stack implementation
-├── examples/
-│   └── hello.fs             # Sample FORTH program
-└── tests/
-└── test\_core.py         # Unit tests
+## Requirements
 
-````
+* **Python 3.7+**
+* **NASM** (Netwide Assembler)
+* **LD** (GNU Linker)
 
----
+## How to Use
 
-## ▶️ Usage
+1. **Write FORTH code** in a `.forth` file.
 
-### 1. Run a FORTH file
+2. **Run the compiler**:
 
-```bash
-python3 main.py examples/hello.fs
-````
+   ```bash
+   python3 main.py
+   ```
+## Example
 
-### 2. Use REPL (interactive mode)
 
-```bash
-python3 main.py
-```
-
-Then type FORTH code directly:
 
 ```
-> 2 3 + .
-5
-> : square dup * ; 
-> 4 square .
-16
-> exit
+: square dup * ;
+5 square .
 ```
 
----
-
-## 🧪 Run Tests
-
-Make sure everything is working:
-
-```bash
-python3 -m unittest discover tests
-```
-
-You should see:
-
-```
-...
-----------------------------------------------------------------------
-Ran 3 tests in 0.001s
-
-OK
-```
-
----
-
-## 📜 Features
-
-✅ Arithmetic operations: `+ - * /`
-✅ Stack operations: `dup drop swap over`
-✅ Word definitions: `: name ... ;`
-✅ Output: `.` and `.S`
-🚧 Note: `emit` is not yet implemented in core interpreter, but used in example.
-
----
-
-## 📂 Example Program: `hello.fs`
-
-```forth
-: hello
-  72 emit 101 emit 108 emit 108 emit 111 emit
-  44 emit 32 emit
-  87 emit 111 emit 114 emit 108 emit 100 emit 33 emit ;
-
-hello
-```
+This code defines a word `square` that squares a number and prints the result. It outputs `25`.
 
 
 

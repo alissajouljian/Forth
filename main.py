@@ -1,28 +1,17 @@
-from compiler import ForthInterpreter
-import sys
+from lexer import tokenize
+from parser import parse
+from codegen import generate_assembly
+from runner import compile_and_run
 
-def run_file(filename):
-    with open(filename) as f:
-        code = f.read()
-    interp = ForthInterpreter()
-    interp.run(code)
+def main():
+    with open("samples/test1.fth", "r") as f:
+        source = f.read()
 
-def repl():
-    interp = ForthInterpreter()
-    print("Welcome to miniFORTH. Type 'exit' to quit.")
-    while True:
-        try:
-            line = input("> ")
-            if line.strip() == "exit":
-                break
-            interp.run(line)
-        except Exception as e:
-            print(f"Error: {e}")
+    tokens = tokenize(source)
+    instructions = parse(tokens)
+    generate_assembly(instructions, "output/program.asm")
+    compile_and_run("output/program.asm", "output/program")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        run_file(sys.argv[1])
-    else:
-        repl()
-
+    main()
 

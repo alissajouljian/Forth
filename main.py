@@ -9,8 +9,8 @@ def main():
 
     tokens = tokenize(source)
     instructions = parse(tokens)
-    generate_assembly(instructions, "output/program.asm")
-    compile_and_run("output/program.asm", "output/program")
+    generate_assembly(instructions, "output/program.s")
+    compile_and_run("output/program.s", "output/program")
 
 if __name__ == "__main__":
     main()
